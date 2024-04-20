@@ -1,9 +1,22 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from '../views/home/home.component';
+import { CheckAuthCanActiveGuard } from '../guards/check-auth.canactive.guard';
+
 
 export const publicRoutes: Routes = [
+    {
+        path:'home', 
+        component:HomeComponent,
+        canActivate: [CheckAuthCanActiveGuard]
+    },
+    {
+        path:'', 
+        component:HomeComponent,
+        canActivate: [CheckAuthCanActiveGuard]
+    },
 //   {
 //     path: 'home',
 //     component: HomeComponent,
-//     canActivate: [CheckAuthCanActiveGuard],
+//     v,
 //   }
 ];

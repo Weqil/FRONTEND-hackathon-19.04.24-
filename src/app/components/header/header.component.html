@@ -1,11 +1,10 @@
 <section class="main header-wrapper">
   <nav class="header-main">
-    <div [routerLink]="['/home']" class="header-main-item_logo">
+    <div  class="header-main-item_logo">
       <img src="/assets/imgs/logo.png" alt="" class="header-main-item_logo_img">
     </div>
     <div class="header-main-item_button">
-        <button *ngIf="!auth" class="button-submit">Войти</button>
-     
+        <button [routerLink]="['/login']" *ngIf="!auth" class="button-submit">Войти</button>
         <button *ngIf="auth" class="button-submit">Найти пару</button>
         <div *ngIf="auth" class="header-main-item_user-icon_wrapper">
           <img class="header-main-item_user-icon" src="/assets/icon/contact.svg">
