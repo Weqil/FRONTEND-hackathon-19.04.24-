@@ -6,9 +6,9 @@
     border-radius: 8px;
     min-height: 290px;
     margin-top: 10rem;
-    align-items: center;
-}
-.test{
+  }
+   
+.input-wrapper{
    margin-top: 2rem; 
 }
 .button-wrapper{
@@ -17,5 +17,13 @@
 }
 .login-header{
   color: #000000;
+}
+.login-header-wrapper_reg{
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  cursor: pointer;
 }
    
