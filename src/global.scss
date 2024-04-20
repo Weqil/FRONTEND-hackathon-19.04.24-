@@ -144,3 +144,46 @@ section{
 .segment{
     margin-top: 2rem;
 }
+
+ion-modal{
+    --overflow-y: scroll;
+}
+.modal-main{
+    max-width: 80%;
+    margin: auto;
+}
+
+.delete-button{
+    transition: 0.4s;
+    font-family:Montserrat-Regular;
+    text-align: center;
+    width: 2rem;
+    border-radius: 2px;
+    padding: 0.4rem;
+    color: #fff;
+    font-size: 12px;
+    background-color: #FF0404;
+}
+.delete-button:hover{
+    transition: 0.4s;
+    font-family:Montserrat-Regular;
+    text-align: center;
+    width: 2rem;
+    border-radius: 2px;
+    padding: 0.4rem;
+    color: #fff;
+    font-size: 12px;
+    background-color: #c00505;
+}
+.modal-main-content{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.delete-button-item{
+    background-color: #fff;
+    width: 60%;
+    margin: auto;
+    height: 4px;
+}

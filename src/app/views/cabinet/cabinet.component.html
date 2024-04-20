@@ -10,21 +10,35 @@
             <div class="last-header_regular main-cabinet-section_header">Участники компании</div>
             <div class="last-header_regular_small main-cabinet-section_header">Количество участников: {{companyUsersCount}}</div>
             <div class="button-wrapper">
-              <button  type="submit" class="button-submit">Посмотреть всех участников</button>
+              <button id="open-modal-company-workers"  type="submit" class="button-submit">Посмотреть всех участников</button>
+              <ion-modal trigger="open-modal-company-workers">
+                <ng-template>
+                  <ion-content>
+                    <app-company-workers-modal></app-company-workers-modal>
+                  </ion-content>
+                </ng-template>
+              </ion-modal>
             </div>
         </div>
         <div class="main-cabinet-section">
             <div class="last-header_regular main-cabinet-section_header">Статистика</div>
             <div class="last-header_regular_small main-cabinet-section_header">Количество встреч: {{companyMeetingsCount}}</div>
             <div class="button-wrapper">
-              <button  type="submit" class="button-submit">Посмотреть все встречи</button>
+              <button [routerLink]="['/statistics']"  type="submit" class="button-submit">Посмотреть все встречи</button>
             </div>
         </div>
         <div class="main-cabinet-section">
             <div class="last-header_regular main-cabinet-section_header">Настройки компании</div>
             <div class="last-header_regular_small main-cabinet-section_header">Название компании</div>
             <div class="button-wrapper">
-              <button  type="submit" class="button-submit">Изменить</button>
+              <button id="open-modal-company-profile"  type="submit" class="button-submit">Посмотреть всех участников</button>
+              <ion-modal trigger="open-modal-company-profile">
+                <ng-template>
+                      <ion-content>
+                        <app-company-settings-modal></app-company-settings-modal>
+                      </ion-content>
+                </ng-template>
+              </ion-modal>
             </div>
         </div>
         
@@ -33,12 +47,26 @@
  
     <ng-container *ngIf="companyWorker == 'worker'">
       <section class="content-grid">
-        <div class="main-cabinet-section"></div>
-        <div class="main-cabinet-section"></div>
-        <div class="main-cabinet-section"></div>
+          <div class="main-cabinet-section">
+            <div class="last-header_regular main-cabinet-section_header">Настройки профиля</div>
+            <div class="last-header_regular_small main-cabinet-section_header">Имя работника</div>
+            <div class="button-wrapper">
+              <button id="open-modal" expand="block"  type="submit" class="button-submit">Посмотреть всех участников</button>
+            </div>
+        </div>
+        <div class="main-cabinet-section">
+            <div class="last-header_regular main-cabinet-section_header">Мои встречи</div>
+            <div class="last-header_regular_small main-cabinet-section_header">Количество встреч</div>
+            <div class="button-wrapper">
+              <button [routerLink]="['/statistics']"  class="button-submit">Посмотреть все встречи</button>
+            </div>
+        </div>
       </section>
     </ng-container>
  
     
   </div>
 </section>
+
+
+

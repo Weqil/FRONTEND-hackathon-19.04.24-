@@ -12,6 +12,9 @@ import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { CabinetComponent } from './views/cabinet/cabinet.component';
 import { AuthTokenInterceptor } from './auth-token.interceptor';
+import { CompanyWorkersModalComponent } from './components/company-workers-modal/company-workers-modal.component';
+import { CompanySettingsModalComponent } from './components/company-settings-modal/company-settings-modal.component';
+import { CompanyStatisticsComponent } from './views/company-statistics/company-statistics.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +22,10 @@ import { AuthTokenInterceptor } from './auth-token.interceptor';
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    CabinetComponent
+    CabinetComponent,
+    CompanyWorkersModalComponent,
+    CompanySettingsModalComponent,
+    CompanyStatisticsComponent
   ],
   imports: [
     BrowserModule, 
