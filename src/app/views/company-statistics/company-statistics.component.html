@@ -9,36 +9,29 @@
       <ion-accordion value="all">
         <ion-item slot="header" color="white">
           <div class="last-header_regular">
-            <div>Всего встреч 22</div>
+            <div>Всего встреч {{meetings.length}}</div>
           </div>
         </ion-item>
-        <div class="ion-padding meeting-info successful" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
-        <div class="ion-padding meeting-info cancelled" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
+        <div *ngFor="let meeting of meetings; let i = index" [ngClass]="meeting.length ? 'ion-padding meeting-info successful' : 'ion-padding meeting-info cancelled'" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
+        <!-- <div class="ion-padding meeting-info cancelled" slot="content"><div>Название встречи</div><div>22.04.2024</div></div> -->
       </ion-accordion>
 
       <ion-accordion value="successful">
         <ion-item slot="header"color="white">
           <div class="last-header_regular">
-            <div>Успешных встреч 12</div>
+            <div>Успешных встреч</div>
           </div>
         </ion-item>
-        <div class="ion-padding meeting-info successful" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
-        <div class="ion-padding meeting-info successful" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
-        <div class="ion-padding meeting-info successful" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
-        <div class="ion-padding meeting-info successful" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
-        <div class="ion-padding meeting-info successful" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
-        <div class="ion-padding meeting-info successful" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
+        <div *ngFor="let meeting of meetings; let i = index" [hidden]="meeting" class="ion-padding meeting-info successful" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
       </ion-accordion>
 
       <ion-accordion value="cancelled">
         <ion-item slot="header" color="white">
           <div class="last-header_regular">
-            <div>Отмененных встреч 16</div>
+            <div>Отмененных встреч</div>
           </div>
         </ion-item>
-        <div class="ion-padding meeting-info cancelled" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
-        <div class="ion-padding meeting-info cancelled" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
-        <div class="ion-padding meeting-info cancelled" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
+        <div *ngFor="let meeting of meetings; let i = index" [hidden]="!meeting" class="ion-padding meeting-info cancelled" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
       </ion-accordion>
 
     </ion-accordion-group>
