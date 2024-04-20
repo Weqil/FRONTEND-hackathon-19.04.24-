@@ -34,6 +34,12 @@ export class UserService {
     this.user.next(null);
   }
 
+  getUserById(): Observable<IUser> {
+    return this.http.get<IUser>(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/users`
+    );
+  }
+
   // changeName(data: FormData): Observable<any> {
   //   // return this.http.post(`${environment.BACKEND_URL}:${environment.BACKEND_PORT}/api/profile/users`,{'new_name':data.get('new_name'), 'avatar':data.get('avatar')})
   //   return this.http.post<any>(
