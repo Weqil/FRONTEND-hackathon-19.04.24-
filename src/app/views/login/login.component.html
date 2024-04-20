@@ -1,26 +1,28 @@
-<section>
-<app-header></app-header>
-<div class="main">
-    <div class="login-form-wrapper">
-        <div class="login-header-wrapper">
-            <ion-text class="second-header login-header">Авторизация</ion-text>
+<ion-content>
+    <section>
+        <app-header></app-header>
+        <div class="main">
+            <div class="login-form-wrapper">
+                <div class="login-header-wrapper">
+                    <ion-text class="second-header login-header">Авторизация</ion-text>
+                </div>
+                <form action="" [formGroup]="loginForm" (submit)="onSubmitLogin()">
+                    <div class="input-wrapper">
+                        <ion-input class="input login-form-wrapper_wrapper" formControlName="name" labelPlacement="floating" fill="outline">
+                            <div class="label-text" slot="label">Логин</div>
+                        </ion-input>
+                        <ion-input class="input login-form-wrapper_wrapper" formControlName="password" labelPlacement="floating" fill="outline">
+                            <div class="label-text" slot="label">Пароль</div>
+                        </ion-input>
+                    </div>
+                    <div class="button-wrapper">
+                        <button [disabled]="loginForm.invalid || loginForm.disabled" type="submit" class="button-submit">Вход</button>
+                    </div>
+                </form>
+            </div>
+            <div [routerLink]="['/register']" class="login-header-wrapper_reg">
+                <span class="last-header_small">Регистрация</span>
+            </div>
         </div>
-        <form action="" [formGroup]="loginForm" (submit)="onSubmitLogin()">
-            <div class="input-wrapper">
-                <ion-input class="input login-form-wrapper_wrapper" formControlName="name" labelPlacement="floating" fill="outline">
-                    <div class="label-text" slot="label">Логин</div>
-                </ion-input>
-                <ion-input class="input login-form-wrapper_wrapper" formControlName="password" labelPlacement="floating" fill="outline">
-                    <div class="label-text" slot="label">Пароль</div>
-                </ion-input>
-            </div>
-            <div class="button-wrapper">
-                <button [disabled]="loginForm.invalid || loginForm.disabled" type="submit" class="button-submit">Вход</button>
-            </div>
-        </form>
-    </div>
-    <div [routerLink]="['/register']" class="login-header-wrapper_reg">
-        <span class="last-header_small">Регистрация</span>
-    </div>
-</div>
-</section>
+        </section>
+</ion-content>
