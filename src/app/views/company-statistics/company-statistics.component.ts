@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { EMPTY, catchError, of } from 'rxjs';
+import { LoadingService } from 'src/app/services/loading.service';
+import { MeetingService } from 'src/app/services/meeting.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-company-statistics',
@@ -7,8 +11,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyStatisticsComponent  implements OnInit {
 
-  constructor() { }
+  constructor(
+    private meetingService: MeetingService,
+    private toastService: ToastService,
+    private loadingService: LoadingService
+  ) { }
 
-  ngOnInit() {}
+  meetings: any[] = []
+
+  getUsersMeetingCount() {
+    this.loadingService.showLoading()
+    this.meetingService.getAllUsersCompany().pipe(
+      catchError(err => {
+        this.toastService.showToast('при загрузке встреч произошла ошибка', 'warning')
+        this.loadingService.hideLoading()
+        return of(EMPTY)
+      })
+    ).subscribe((response: any) => {
+      console.log(response)
+      this.loadingService.hideLoading()
+      this.meetings = response.company_meetings
+    })
+  }
+
+  ngOnInit() {
+    this.getUsersMeetingCount()
+  }
 
 }
