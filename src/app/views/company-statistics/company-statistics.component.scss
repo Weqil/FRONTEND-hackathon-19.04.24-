@@ -1,5 +1,31 @@
 .main-header{
     margin-top: 2rem;
     text-align: center;
-   
+}
+.main-info-item{
+    padding-top: 2rem;
+    margin: auto;
+    max-width: 60%;
+
+    border-bottom: 1px solid #72727271;
+    padding-bottom: 1rem;
+}
+.main-wrapper{
+    margin: auto;
+    max-width: 60%;
+}
+.cancelled{
+    background-color: #b8292967;
+}
+.successful{
+    background-color: #29b85467;
+}
+
+.meeting-info{
+    display: flex;
+    justify-content: space-between;
+}
+.back{
+    margin-top: 4rem;
+    cursor: pointer;
 }
