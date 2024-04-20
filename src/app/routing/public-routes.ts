@@ -15,11 +15,11 @@ export const publicRoutes: Routes = [
         component:HomeComponent,
         canActivate: [CheckAuthCanActiveGuard]
     },
-    {
-        path:'cabinet',
-        component:CabinetComponent,
-        canActivate: [CheckAuthCanActiveGuard]
-    },
+    // {
+    //     path:'cabinet',
+    //     component:CabinetComponent,
+    //     canActivate: [CheckAuthCanActiveGuard]
+    // },
     {
         path:'statistics',
         component:CompanyStatisticsComponent,

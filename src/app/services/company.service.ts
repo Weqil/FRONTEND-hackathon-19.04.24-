@@ -43,4 +43,17 @@ export class CompanyService {
       `${environment.BACK_URL}:${environment.BACK_PORT}/api/companies/${this.company_id}/users/count`
     );
   }
+
+  getAllUsersCompany() {
+    return this.http.get<any>(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/companies/${this.company_id}/users`
+    );
+  }
+
+  editCompany(params: any) {
+    return this.http.patch<any>(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/companies/${this.company_id}`,
+      params
+    );
+  }
 }

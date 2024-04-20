@@ -41,6 +41,6 @@ export class CabinetComponent  implements OnInit {
 
   ngOnInit() {
   this.getUsersCompaniesCount()
-  // this.getUsersMeetingCount()
+  this.getUsersMeetingCount()
   }
 }
