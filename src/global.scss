@@ -80,7 +80,7 @@ $inputColor:#000000;
  
 }
 .input{
-
+    margin-bottom: 1rem;
 }
 .input-fill-outline.has-focus.sc-ion-input-md-h{
     --border-color:#FFED00;
@@ -110,4 +110,8 @@ $inputColor:#000000;
     max-width: 1240px;
     margin-left: auto;
     margin-right: auto;
+
+}
+.login-form-wrapper{
+    text-align: center;
 }
