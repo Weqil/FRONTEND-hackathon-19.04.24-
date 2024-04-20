@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { MessagesAuth } from 'src/app/enums/message-auth';
 import { MessagesErrors } from 'src/app/enums/message-error';
@@ -18,6 +19,7 @@ export class LoginComponent  implements OnInit {
   private readonly destroy$ = new Subject<void>();
 
   constructor(
+    private router: Router,
     private loadingService: LoadingService,
     private authservice: AuthService,
     private toastService: ToastService,
@@ -36,6 +38,7 @@ export class LoginComponent  implements OnInit {
   }
 
   onSubmitLogin() {
+    console.log('log')
     this.loginForm.disable();
     this.loadingService.showLoading();
     this.authservice
@@ -59,6 +62,7 @@ export class LoginComponent  implements OnInit {
     this.toastService.showToast(MessagesAuth.login, 'success');
     this.loginForm.reset();
     this.loginForm.enable();
+    this.router.navigate(['home']);
   }
   
   errorResponseAfterLogin(err: any) {
