@@ -1,0 +1,23 @@
+.main-cabinet{
+    margin-top: 4rem;
+}
+
+.main-cabinet-section{
+    padding-left: 2rem;
+    padding-top: 1rem;
+    border-radius: 20px;
+    width: clamp(24rem, 0.909rem + 45.45vw, 35rem);
+    height: 12rem;
+    -webkit-box-shadow: -2px 0px 8px 0px rgba(34, 60, 80, 0.2) inset;
+    -moz-box-shadow: -2px 0px 8px 0px rgba(34, 60, 80, 0.2) inset;
+    box-shadow: -2px 0px 8px 0px rgba(34, 60, 80, 0.2) inset;
+}
+.content-grid{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 4rem;
+}
+.main-cabinet-section_header{
+    margin-bottom: 1rem;
+}

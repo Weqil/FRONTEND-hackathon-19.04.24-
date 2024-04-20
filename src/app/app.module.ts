@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { CabinetComponent } from './views/cabinet/cabinet.component';
 import { AuthTokenInterceptor } from './auth-token.interceptor';
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AuthTokenInterceptor } from './auth-token.interceptor';
     HomeComponent,
     HeaderComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CabinetComponent
   ],
   imports: [
     BrowserModule, 
