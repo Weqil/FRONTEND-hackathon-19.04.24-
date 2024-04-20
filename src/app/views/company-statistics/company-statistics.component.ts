@@ -34,8 +34,16 @@ export class CompanyStatisticsComponent  implements OnInit {
     })
   }
 
+  getMeetings(){
+    this.meetingService.getAllCompanyMeetings()
+    .subscribe((response: any) => {
+      this.meetings = response.company_meetings
+    })
+  }
+
   ngOnInit() {
     this.getUsersMeetingCount()
+    this.getMeetings()
   }
 
 }

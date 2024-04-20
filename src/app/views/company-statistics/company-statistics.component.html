@@ -4,7 +4,7 @@
   <div class="main-wrapper">
     <div [routerLink]="['/cabinet']" class="last-header_regular_small back">Назад</div>
     <div class="main-header second-header">Статистика</div>
-   
+
     <ion-accordion-group class="accordion">
       <ion-accordion value="all">
         <ion-item slot="header" color="white">
@@ -22,7 +22,7 @@
             <div>Успешных встреч</div>
           </div>
         </ion-item>
-        <div *ngFor="let meeting of meetings; let i = index" [hidden]="meeting" class="ion-padding meeting-info successful" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
+        <!-- <div *ngFor="let meeting of meetings; let i = index" [hidden]="meeting" class="ion-padding meeting-info successful" slot="content"><div>Название встречи</div><div>22.04.2024</div></div> -->
       </ion-accordion>
 
       <ion-accordion value="cancelled">
@@ -31,7 +31,7 @@
             <div>Отмененных встреч</div>
           </div>
         </ion-item>
-        <div *ngFor="let meeting of meetings; let i = index" [hidden]="!meeting" class="ion-padding meeting-info cancelled" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
+        <!-- <div *ngFor="let meeting of meetings; let i = index" [hidden]="!meeting" class="ion-padding meeting-info cancelled" slot="content"><div>Название встречи</div><div>22.04.2024</div></div> -->
       </ion-accordion>
 
     </ion-accordion-group>
