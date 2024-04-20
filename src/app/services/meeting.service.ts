@@ -45,5 +45,23 @@ export class MeetingService {
     );
   }
 
+  getAllUsersCompany() {
+    return this.http.get<any>(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/companies/${this.company_id}/meetings`
+    );
+  }
+
+  getAllUsersMeetings() {
+    return this.http.get<any>(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/users/meetings`
+    );
+  }
+
+  getAllUsersMeetingsCount() {
+    return this.http.get<any>(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/users/meetings/count`
+    );
+  }
+
 
 }

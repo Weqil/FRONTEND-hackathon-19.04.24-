@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EMPTY, Subject, catchError, of } from 'rxjs';
 import { CompanyService } from 'src/app/services/company.service';
 import { MeetingService } from 'src/app/services/meeting.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-cabinet',
@@ -13,13 +14,15 @@ export class CabinetComponent  implements OnInit {
 
   constructor(
     private companyService: CompanyService,
-    private meetingService: MeetingService
+    private meetingService: MeetingService,
+    private userService: UserService
   ) { }
-  companyWorker:string = 'worker'
+  companyWorker:string = ''
   companyUsersCount: Number = 0
   companyMeetingsCount: Number = 0
+  usersMeetingsCount: Number = 0
 
-  getUsersCompaniesCount() {
+  getCompaniesCompaniesCount() {
     this.companyService.getAllUsersCompanyCount().pipe(
       catchError(err => {
         return of(EMPTY)
@@ -29,18 +32,35 @@ export class CabinetComponent  implements OnInit {
     })
   }
 
-  getUsersMeetingCount() {
+  getCompaniesMeetingCount() {
     this.meetingService.getAllUsersCompanyCount().pipe(
       catchError(err => {
         return of(EMPTY)
       })
     ).subscribe((response: any) => {
-      this.meetingService = response.company_meetings_count
+      this.companyMeetingsCount = response.company_meentings_count
+    })
+  }
+
+  getUsersMeetingCount() {
+    this.meetingService.getAllUsersMeetingsCount().pipe(
+      catchError(err => {
+        return of(EMPTY)
+      })
+    ).subscribe((response: any) => {
+      this.usersMeetingsCount = response.users_meetings_count
     })
   }
 
   ngOnInit() {
-  this.getUsersCompaniesCount()
-  // this.getUsersMeetingCount()
+    const user = this.userService.getUserFromLocalStorage()
+    if (user.companies.length > 0) {
+      this.companyWorker = 'company'
+      this.getCompaniesCompaniesCount()
+      this.getCompaniesMeetingCount()
+    } else {
+      this.companyWorker = 'worker'
+      this.getUsersMeetingCount()
+    }
   }
 }

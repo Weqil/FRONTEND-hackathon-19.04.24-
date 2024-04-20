@@ -3,10 +3,10 @@
     <div class="modal-main-header second-header">
       Список участников
     </div>
-    <div class="modal-main-content">
+    <div class="modal-main-content" *ngFor="let user of companyUsersCount; let i = index">
       <button class="delete-button"><div class="delete-button-item"></div></button>
-      <div class="last-header_regular_small">Арсений коновалов</div>
-      <div class="last-header_regular_small">1</div>
+      <div class="last-header_regular_small">{{user.name}}</div>
+      <div class="last-header_regular_small">{{user.id}}</div>
     </div>
   </section>
 </ion-content>
