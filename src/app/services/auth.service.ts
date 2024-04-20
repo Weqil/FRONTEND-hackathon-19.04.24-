@@ -63,14 +63,11 @@ export class AuthService {
   }
 
   login(user: IUser): Observable<IUser> {
-    return this.getCSRF().pipe(
-      mergeMap(() => {
+
         return this.http.post<IUser>(
           `${environment.BACK_URL}:${environment.BACK_PORT}/api/login`,
           user
         );
-      })
-    );
   }
 
   register(data: any) {

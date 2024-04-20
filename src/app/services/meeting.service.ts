@@ -11,7 +11,7 @@ export class MeetingService {
   constructor(
     private http: HttpClient,
     private userServices: UserService
-  ) { 
+  ) {
     this.getCompanyId()
     this.getUserId()
   }
@@ -27,7 +27,7 @@ export class MeetingService {
     } else {
       this.getCompanyId()
     }
-    
+
   }
 
   getUserId() {
@@ -55,6 +55,12 @@ export class MeetingService {
     return this.http.get<any>(
       `${environment.BACK_URL}:${environment.BACK_PORT}/api/users/meetings`
     );
+  }
+
+  getAllCompanyMeetings(){
+    return this.http.get<any>(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/companies/${this.company_id}/meetings`
+    )
   }
 
   getAllUsersMeetingsCount() {
