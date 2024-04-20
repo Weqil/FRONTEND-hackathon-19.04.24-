@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from '../views/home/home.component';
 import { CheckAuthCanActiveGuard } from '../guards/check-auth.canactive.guard';
-import { CabinetComponent } from '../views/cabinet/cabinet.component';
 
 
 export const publicRoutes: Routes = [
@@ -15,11 +14,11 @@ export const publicRoutes: Routes = [
         component:HomeComponent,
         canActivate: [CheckAuthCanActiveGuard]
     },
-    {
-        path:'cabinet',
-        component:CabinetComponent,
-        canActivate: [CheckAuthCanActiveGuard]
-    }
+    // {
+    //     path:'cabinet',
+    //     component:CabinetComponent,
+    //     canActivate: [CheckAuthCanActiveGuard]
+    // }
 //   {
 //     path: 'home',
 //     component: HomeComponent,
