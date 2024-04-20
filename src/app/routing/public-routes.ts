@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from '../views/home/home.component';
 import { CheckAuthCanActiveGuard } from '../guards/check-auth.canactive.guard';
 import { CabinetComponent } from '../views/cabinet/cabinet.component';
+import { CompanyStatisticsComponent } from '../views/company-statistics/company-statistics.component';
 
 
 export const publicRoutes: Routes = [
@@ -18,6 +19,11 @@ export const publicRoutes: Routes = [
     {
         path:'cabinet',
         component:CabinetComponent,
+        canActivate: [CheckAuthCanActiveGuard]
+    },
+    {
+        path:'statistics',
+        component:CompanyStatisticsComponent,
         canActivate: [CheckAuthCanActiveGuard]
     }
 //   {
