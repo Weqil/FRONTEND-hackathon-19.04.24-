@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +37,12 @@ export class MeetingService {
     } else {
       this.getUserId()
     }
-    
+  }
+
+  getAllUsersCompanyCount() {
+    return this.http.get<any>(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/companies/${this.company_id}/meetings/count`
+    );
   }
 
 
