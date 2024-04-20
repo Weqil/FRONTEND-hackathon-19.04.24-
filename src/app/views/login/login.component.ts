@@ -36,6 +36,7 @@ export class LoginComponent  implements OnInit {
   }
 
   onSubmitLogin() {
+    console.log('log')
     this.loginForm.disable();
     this.loadingService.showLoading();
     this.authservice
