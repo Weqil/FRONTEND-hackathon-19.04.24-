@@ -15,7 +15,7 @@ export class CabinetComponent  implements OnInit {
     private companyService: CompanyService,
     private meetingService: MeetingService
   ) { }
-  companyWorker:string = 'company'
+  companyWorker:string = 'worker'
   companyUsersCount: Number = 0
   companyMeetingsCount: Number = 0
 

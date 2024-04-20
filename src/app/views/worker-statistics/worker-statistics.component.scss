@@ -1,0 +1,104 @@
+.main-header{
+    margin-top: 2rem;
+    text-align: center;
+}
+.main-info-item{
+    padding-top: 2rem;
+    margin: auto;
+    max-width: 60%;
+
+    border-bottom: 1px solid #72727271;
+    padding-bottom: 1rem;
+}
+.main-wrapper{
+    margin: auto;
+    max-width: 60%;
+}
+.cancelled{
+    background-color: #b8292967;
+}
+.successful{
+    background-color: #29b85467;
+}
+
+.meeting-info{
+    display: flex;
+    justify-content: space-between;
+}
+.back{
+    margin-top: 4rem;
+    cursor: pointer;
+}
+
+.invite{
+    padding-left: 1rem;
+    padding-top: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    min-height: 200px;
+    min-width: 340px;
+    max-width: 450px;
+    -webkit-box-shadow: -2px 0px 8px 0px rgba(34, 60, 80, 0.2) inset;
+    -moz-box-shadow: -2px 0px 8px 0px rgba(34, 60, 80, 0.2) inset;
+    box-shadow: -2px 0px 8px 0px rgba(34, 60, 80, 0.2) inset;
+    
+}
+.invite-date{
+    margin-top: 1rem;
+}
+.invite-buttons_item_accept{
+    min-width: 140px;
+    text-align: center;
+    border-radius: 45px;
+    font-size: 18px;
+    padding: 1.2rem;
+    background: #FFDD00;
+    color: black;
+    font-family:Montserrat-SemiBold;
+    transition: 0.5s all;
+}
+.invite-buttons_item_accept:hover{
+    min-width: 140px;
+    text-align: center;
+    border-radius: 45px;
+    font-size: 18px;
+    padding: 1.2rem;
+    background: #FFED00;
+    color: black;
+    font-family:Montserrat-SemiBold;
+    transition: 0.5s all;
+}
+.invite-buttons_item_cancel{
+    margin-left: 1rem;
+    min-width: 140px;
+    text-align: center;
+    border-radius: 45px;
+    font-size: 18px;
+    padding: 1.2rem;
+    background: #000000;
+    color: rgb(255, 255, 255);
+    font-family:Montserrat-SemiBold;
+    transition: 0.5s all;
+}
+.invite-buttons_item_cancel:hover{
+    min-width: 140px;
+    text-align: center;
+    border-radius: 45px;
+    font-size: 18px;
+    padding: 1.2rem;
+    background: #333333;
+    color: rgb(255, 255, 255);
+    font-family:Montserrat-SemiBold;
+    transition: 0.5s all;
+}
+.invite-buttons{
+    margin-left: -1rem;
+    margin-top: 1rem;
+}
+.invite-header{
+    margin-top: 2rem;
+}
+
+.invite-info{
+    cursor: pointer;
+}

@@ -1,0 +1,32 @@
+
+<section>
+  <app-header></app-header>
+  <div class="main-wrapper">
+    <div [routerLink]="['/cabinet']" class="last-header_regular_small back">Назад</div>
+    <div class="main-header second-header">Мои встречи</div>
+   
+    <ion-accordion-group class="accordion">
+      <ion-accordion value="all">
+        <ion-item slot="header" color="white">
+          <div class="last-header_regular">
+            <div>Всего встреч 22</div>
+          </div>
+        </ion-item>
+        <div class="ion-padding meeting-info successful" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
+        <div class="ion-padding meeting-info cancelled" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
+      </ion-accordion>
+
+
+    </ion-accordion-group>
+    <div class="last-header invite-header">Новое приглашение!</div>
+    <div class="invite">
+      <div class="ion-padding last-header_regular" slot="content"><div>Арсений Коновалов</div>
+      <div class="invite-date">22.04.2024</div>
+      <div class="invite-buttons">
+        <button id="open-modal" expand="block"  type="submit" class=" invite-buttons_item_accept">Принять</button>
+        <button id="open-modal" expand="block"  type="submit" class=" invite-buttons_item_cancel">Отклонить</button>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>

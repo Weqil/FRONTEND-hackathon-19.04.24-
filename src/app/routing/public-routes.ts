@@ -3,7 +3,7 @@ import { HomeComponent } from '../views/home/home.component';
 import { CheckAuthCanActiveGuard } from '../guards/check-auth.canactive.guard';
 import { CompanyStatisticsComponent } from '../views/company-statistics/company-statistics.component';
 import { CabinetComponent } from '../views/cabinet/cabinet.component';
-
+import { WorkerStatisticsComponent } from '../views/worker-statistics/worker-statistics.component';
 
 export const publicRoutes: Routes = [
     {
@@ -24,6 +24,11 @@ export const publicRoutes: Routes = [
     {
         path:'statistics',
         component:CompanyStatisticsComponent,
+        canActivate: [CheckAuthCanActiveGuard]
+    },
+    {
+        path:'worker-statistics',
+        component:WorkerStatisticsComponent,
         canActivate: [CheckAuthCanActiveGuard]
     }
 //   {

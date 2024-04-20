@@ -15,6 +15,7 @@ import { AuthTokenInterceptor } from './auth-token.interceptor';
 import { CompanyWorkersModalComponent } from './components/company-workers-modal/company-workers-modal.component';
 import { CompanySettingsModalComponent } from './components/company-settings-modal/company-settings-modal.component';
 import { CompanyStatisticsComponent } from './views/company-statistics/company-statistics.component';
+import { WorkerStatisticsComponent } from './views/worker-statistics/worker-statistics.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { CompanyStatisticsComponent } from './views/company-statistics/company-s
     CabinetComponent,
     CompanyWorkersModalComponent,
     CompanySettingsModalComponent,
-    CompanyStatisticsComponent
+    CompanyStatisticsComponent,
+    WorkerStatisticsComponent
   ],
   imports: [
     BrowserModule, 
