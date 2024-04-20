@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subject, map, takeUntil } from 'rxjs';
+import { EMPTY, Subject, catchError, map, of, takeUntil } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { TokenService } from 'src/app/services/token.service';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,6 +17,7 @@ export class RegisterComponent  implements OnInit {
   private readonly destroy$ = new Subject<void>();
   
   constructor(
+    private router: Router,
     private loadingService: LoadingService,
     private authservice: AuthService,
     private toastService: ToastService,
@@ -23,27 +25,56 @@ export class RegisterComponent  implements OnInit {
     private userService: UserService
   ) { }
 
-  registerForm!: FormGroup;
+  registerFormUser!: FormGroup;
+  registerFormOrg!: FormGroup;
   companyWorker:string = 'company'
 
   onSubmitReg() {
     this.loadingService.showLoading();
-    this.authservice.register(this.registerForm.value)
-    .pipe(
-      map((response: any) => {
-        this.toastService.showToast(
-          'Вы успешно зарегестрировались!!!',
-          'success'
-        );
-        response.access_token
-                ? this.loginAfterSocial(response.access_token)
-                : this.loginAfterSocial('no');
-        this.loadingService.hideLoading();
-      }),
-    )
-    .subscribe((response: any) => {
-
-    })
+    if (this.companyWorker == 'company') {
+      this.registerFormOrg.controls['company'].patchValue({name: this.registerFormOrg.value.name})
+      this.authservice.register(this.registerFormOrg.value)
+      .pipe(
+        map((response: any) => {
+          this.toastService.showToast(
+            'Вы успешно зарегестрировались как компания!!!',
+            'success'
+          );
+          response.access_token
+                  ? this.loginAfterSocial(response.access_token)
+                  : this.loginAfterSocial('no');
+          this.loadingService.hideLoading();
+        }),
+        catchError(err => {
+          console.log(err)
+          this.loadingService.hideLoading();
+          this.toastService.showToast(err.error.message, 'warning');
+          return of(EMPTY);
+        }),
+      )
+      .subscribe()
+    } else {
+      this.authservice.register(this.registerFormUser.value)
+      .pipe(
+        map((response: any) => {
+          this.toastService.showToast(
+            'Вы успешно зарегестрировались!!!',
+            'success'
+          );
+          response.access_token
+                  ? this.loginAfterSocial(response.access_token)
+                  : this.loginAfterSocial('no');
+          this.loadingService.hideLoading();
+        }),
+        catchError(err => {
+          console.log(err)
+          this.loadingService.hideLoading();
+          this.toastService.showToast('Авторизация неудачна', 'warning');
+          return of(EMPTY);
+        }),
+      )
+      .subscribe()
+    }
   }
 
   changeType(event:any){
@@ -72,14 +103,43 @@ export class RegisterComponent  implements OnInit {
   positiveResponseAfterLogin(data: any) {
     this.userService.setUser(data.user);
     this.loadingService.hideLoading();
-    // this.registerForm.reset()
-    // this.registerForm.enable()
-    // this.router.navigate(['cabinet']);
+    this.registerFormUser.reset()
+    this.registerFormUser.enable()
+    this.registerFormOrg.reset()
+    this.registerFormOrg.enable()
+    this.router.navigate(['cabinet']);
   }
 
   ngOnInit() {
-    this.registerForm = new FormGroup({
+    this.registerFormUser = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
+      register_as: new FormControl('user', [Validators.required]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+      password_confirmation: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+      name: new FormControl('' , [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(50),
+      ]),
+      code:  new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      about: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(255),
+      ]),
+    });
+    this.registerFormOrg = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      register_as: new FormControl('company', [Validators.required]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
@@ -93,6 +153,15 @@ export class RegisterComponent  implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(50),
       ]),
+      company: new FormControl(
+        new FormGroup({
+          name: new FormControl('' , [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(50),
+          ]),
+        }),
+        Validators.required),
     });
   }
 
