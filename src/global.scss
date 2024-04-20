@@ -80,8 +80,9 @@ $inputColor:#000000;
  
 }
 .input{
+    color: #000000;
     text-align: start;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 .input-fill-outline.has-focus.sc-ion-input-md-h{
     --border-color:#FFED00;
@@ -122,4 +123,9 @@ $inputColor:#000000;
 }
 .html{
     background: #fff;
+}
+.segment{
+    margin-top: 1rem;
+    font-family:Montserrat-SemiBold;
+    font-size: 16px;
 }

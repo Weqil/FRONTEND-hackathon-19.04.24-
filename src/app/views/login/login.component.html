@@ -10,7 +10,7 @@
                 <ion-input class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
                     <div class="label-text" slot="label">Логин</div>
                 </ion-input>
-                <ion-input class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
+                <ion-input type="password" class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
                     <div class="label-text" slot="label">Пароль</div>
                 </ion-input>
             </div>
@@ -19,7 +19,7 @@
             </div>
         </form>
     </div>
-    <div class="login-header-wrapper_reg">
+    <div [routerLink]="['/register']" class="login-header-wrapper_reg">
         <span class="last-header_small">Регистрация</span>
     </div>
 </div>

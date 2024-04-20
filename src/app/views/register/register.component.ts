@@ -24,6 +24,7 @@ export class RegisterComponent  implements OnInit {
   ) { }
 
   registerForm!: FormGroup;
+  companyWorker:string = 'company'
 
   onSubmitReg() {
     this.loadingService.showLoading();
@@ -43,6 +44,10 @@ export class RegisterComponent  implements OnInit {
     .subscribe((response: any) => {
 
     })
+  }
+
+  changeType(event:any){
+    this.companyWorker = event.detail.value
   }
 
   loginAfterSocial(token: any) {
