@@ -1,0 +1,44 @@
+<section>
+  <app-header></app-header>
+  <div class="main main-cabinet">
+    <div class="second-header">
+      Профиль
+    </div>
+    <ng-container *ngIf="companyWorker == 'company'">
+      <section class="content-grid">
+        <div class="main-cabinet-section">
+            <div class="last-header_regular main-cabinet-section_header">Участники компании</div>
+            <div class="last-header_regular_small main-cabinet-section_header">Количество участников</div>
+            <div class="button-wrapper">
+              <button  type="submit" class="button-submit">Посмотреть всех участников</button>
+            </div>
+        </div>
+        <div class="main-cabinet-section">
+            <div class="last-header_regular main-cabinet-section_header">Статистика</div>
+            <div class="last-header_regular_small main-cabinet-section_header">Количество встреч</div>
+            <div class="button-wrapper">
+              <button  type="submit" class="button-submit">Посмотреть все встречи</button>
+            </div>
+        </div>
+        <div class="main-cabinet-section">
+            <div class="last-header_regular main-cabinet-section_header">Настройки компании</div>
+            <div class="last-header_regular_small main-cabinet-section_header">Название компании</div>
+            <div class="button-wrapper">
+              <button  type="submit" class="button-submit">Изменить</button>
+            </div>
+        </div>
+        
+      </section>
+    </ng-container>
+ 
+    <ng-container *ngIf="companyWorker == 'worker'">
+      <section class="content-grid">
+        <div class="main-cabinet-section"></div>
+        <div class="main-cabinet-section"></div>
+        <div class="main-cabinet-section"></div>
+      </section>
+    </ng-container>
+ 
+    
+  </div>
+</section>
