@@ -5,7 +5,7 @@
       Профиль
     </div>
     <ng-container *ngIf="companyWorker == 'company'">
-      <section class="content-grid">
+      <div class="content-grid">
         <div class="main-cabinet-section">
             <div class="last-header_regular main-cabinet-section_header">Участники компании</div>
             <div class="last-header_regular_small main-cabinet-section_header">Количество участников: {{companyUsersCount}}</div>
@@ -42,7 +42,7 @@
             </div>
         </div>
         
-      </section>
+      </div>
     </ng-container>
  
     <ng-container *ngIf="companyWorker == 'worker'">
