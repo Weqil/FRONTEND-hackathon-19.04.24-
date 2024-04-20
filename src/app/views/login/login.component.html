@@ -2,9 +2,11 @@
 <app-header></app-header>
 <div class="main">
     <div class="login-form-wrapper">
-        <ion-text class="second-header login-header">Авторизация</ion-text>
+        <div class="login-header-wrapper">
+            <ion-text class="second-header login-header">Авторизация</ion-text>
+        </div>
         <form action="">
-            <div class="test">
+            <div class="input-wrapper">
                 <ion-input class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
                     <div class="label-text" slot="label">Логин</div>
                 </ion-input>
@@ -15,8 +17,10 @@
             <div class="button-wrapper">
                 <button class="button-submit">Вход</button>
             </div>
-        
         </form>
+    </div>
+    <div class="login-header-wrapper_reg">
+        <span class="last-header_small">Регистрация</span>
     </div>
 </div>
 </section>
