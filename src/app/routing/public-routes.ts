@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from '../views/home/home.component';
 import { CheckAuthCanActiveGuard } from '../guards/check-auth.canactive.guard';
-import { CabinetComponent } from '../views/cabinet/cabinet.component';
 import { CompanyStatisticsComponent } from '../views/company-statistics/company-statistics.component';
 
 

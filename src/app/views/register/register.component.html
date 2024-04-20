@@ -2,64 +2,60 @@
   <app-header></app-header>
   <div class="main">
       <div class="login-form-wrapper">
-          <div class="login-header-wrapper">
-              <ion-text class="second-header login-header">Регистрация</ion-text>
-          </div>
-          <form action="">
-            <ion-segment (ionChange)="changeType($event)" class="segment" mode="ios" value="company">
-                <ion-segment-button value="company">
-                  <ion-label>Компания</ion-label>
-                </ion-segment-button>
-                <ion-segment-button value="worker">
-                  <ion-label>Работник</ion-label>
-                </ion-segment-button>
-              </ion-segment>
+        <div class="login-header-wrapper">
+            <ion-text class="second-header login-header">Регистрация</ion-text>
+        </div>
+        <ion-segment (ionChange)="changeType($event)" class="segment" mode="ios" value="company">
+            <ion-segment-button value="company">
+                <ion-label>Компания</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="worker">
+                <ion-label>Работник</ion-label>
+            </ion-segment-button>
+        </ion-segment>
 
-              <ng-container *ngIf="companyWorker=='worker'">
-                <div class="input-wrapper">
-                    <ion-input class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
-                        <div class="label-text" slot="label">Ваше имя</div>
-                    </ion-input>
-                    <ion-input class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
-                        <div class="label-text" slot="label">О себе</div>
-                    </ion-input>
-                    <ion-input class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
-                        <div class="label-text" slot="label">Электронная почта</div>
-                    </ion-input>
-                    <ion-input type="text" class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
-                        <div class="label-text" slot="label">Код приглашения</div>
-                    </ion-input>
-                    <ion-input type="password" class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
-                        <div class="label-text" slot="label">Пароль</div>
-                    </ion-input>
-                    <ion-input type="password" class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
-                        <div class="label-text" slot="label">Подтверждение пароля</div>
-                    </ion-input>
-                </div>
-              </ng-container>
-              <ng-container *ngIf="companyWorker=='company'">
-                <div class="input-wrapper">
-                    <ion-input class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
-                        <div class="label-text" slot="label">Название компании</div>
-                    </ion-input>
-                    <ion-input class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
-                        <div class="label-text" slot="label">Электронная почта</div>
-                    </ion-input>
-                    <ion-input class="input login-form-wrapper_wrapper " type="password" labelPlacement="floating" fill="outline">
-                        <div class="label-text" slot="label">Пароль</div>
-                    </ion-input>
-                    <ion-input class="input login-form-wrapper_wrapper" type="password" labelPlacement="floating" fill="outline">
-                        <div class="label-text" slot="label">Подтверждение пароля</div>
-                    </ion-input>
-                  
-                </div>
-              </ng-container>
+        <ng-container [formGroup]="registerFormUser" *ngIf="companyWorker=='worker'">
+        <div class="input-wrapper">
+            <ion-input formControlName="name" class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
+                <div class="label-text" slot="label">Ваше имя</div>
+            </ion-input>
+            <ion-input formControlName="about" class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
+                <div class="label-text" slot="label">О себе</div>
+            </ion-input>
+            <ion-input formControlName="email" class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
+                <div class="label-text" slot="label">Электронная почта</div>
+            </ion-input>
+            <ion-input formControlName="code" type="text" class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
+                <div class="label-text" slot="label">Код приглашения</div>
+            </ion-input>
+            <ion-input formControlName="password" type="password" class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
+                <div class="label-text" slot="label">Пароль</div>
+            </ion-input>
+            <ion-input formControlName="password_confirmation" type="password" class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
+                <div class="label-text" slot="label">Подтверждение пароля</div>
+            </ion-input>
+        </div>
+        </ng-container>
+        <ng-container [formGroup]="registerFormOrg" *ngIf="companyWorker=='company'">
+            <div class="input-wrapper">
+                <ion-input formControlName="name" class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
+                    <div class="label-text" slot="label">Название компании</div>
+                </ion-input>
+                <ion-input formControlName="email" class="input login-form-wrapper_wrapper" labelPlacement="floating" fill="outline">
+                    <div class="label-text" slot="label">Электронная почта</div>
+                </ion-input>
+                <ion-input formControlName="password"class="input login-form-wrapper_wrapper " type="password" labelPlacement="floating" fill="outline">
+                    <div class="label-text" slot="label">Пароль</div>
+                </ion-input>
+                <ion-input formControlName="password_confirmation" class="input login-form-wrapper_wrapper" type="password" labelPlacement="floating" fill="outline">
+                    <div class="label-text" slot="label">Подтверждение пароля</div>
+                </ion-input>
+            </div>
+        </ng-container>
 
-             
-              <div class="button-wrapper">
-                  <button class="button-submit">Регистрация</button>
-              </div>
-          </form>
+        <div class="button-wrapper">
+            <button (click)="onSubmitReg()" class="button-submit">Регистрация</button>
+        </div>
       </div>
       <div  [routerLink]="['/login']" class="login-header-wrapper_reg">
           <span class="last-header_small">Вход</span>

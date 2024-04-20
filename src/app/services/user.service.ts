@@ -36,7 +36,7 @@ export class UserService {
 
   getUserById(): Observable<IUser> {
     return this.http.get<IUser>(
-      `${environment.BACK_URL}:${environment.BACK_PORT}/api/users`
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/users/me`
     );
   }
 
