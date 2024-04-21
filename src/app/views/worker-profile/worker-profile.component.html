@@ -2,29 +2,55 @@
   <app-header></app-header>
   <div class="main">
     <div class="main-header second-header">Мой профиль</div>
-    <form action="">
+    <form [formGroup]="profileForm" action="">
       <div class="main-info-grid">
         <div class="main-info-grid_inputs">
-          <ion-input class="input" value="" labelPlacement="floating" fill="outline">
+          <ion-input class="input" value="{{user.name}}" labelPlacement="floating" fill="outline">
             <div class="label-text" slot="label">Имя</div>
           </ion-input>
-          <ion-input type="date"  class="input" value="" labelPlacement="floating" fill="outline">
-            <div class="label-text" slot="label">Дата рождения</div>
-          </ion-input>
-          <ion-input type="mail"  class="input" value="" labelPlacement="floating" fill="outline">
+        
+          <ion-input type="mail"  class="input" value="{{user.email}}" labelPlacement="floating" fill="outline">
             <div class="label-text" slot="label">Электронная почта</div>
           </ion-input>
+          <ion-input type="mail"  class="input" value="{{user.social}}" labelPlacement="floating" fill="outline">
+            <div class="label-text" slot="label">Ссылка для связи</div>
+          </ion-input>
+          <ion-input type="mail"  class="input" value="" labelPlacement="floating" fill="outline">
+            <div class="label-text" slot="label">Ссылка для связи</div>
+          </ion-input>
+          <div class="custom-input-profile">
+            <div class="label-text custom-input-profile-label" slot="label">Хобби</div>
+            <div class="custom-input-profile-change_wrapper custom-input-profile-grid">
+              <div class="" *ngFor="let prof of hobbies">
+                <button *ngIf="userId == 0" class="del" (click)="delHobby($event)" name="{{prof.name}}" id="{{prof.id}}">x</button>
+                <div class="custom-input-profile-grid-item">
+                  {{prof.name}}
+                </div>
+              
+              </div>
+              <div>
+                <input formControlName="hobbyesText" class="custom-input-profile-change" type="text">
+                <button *ngIf="auth" class="sub" id="{{this.profileForm.value.hobbyesText}}" (click)="addHobby($event)">+</button>
+              </div>
+           
+            </div>
+            
+          </div>
           <div class="custom-input-profile">
             <div class="label-text custom-input-profile-label" slot="label">Профессии</div>
-            <div class="custom-input-profile-change_wrapper">
-              <div *ngFor="let prof of  professionAdd">
-                {{prof}}
-                <button name="{{prof}}" (click)="customInputFormProfessionDel($event)">-</button>
+            <div class="custom-input-profile-change_wrapper custom-input-profile-grid">
+              <div class="" *ngFor="let off of offices">
+                <button *ngIf="userId == 0" class="del" (click)="delOffice($event)" name="{{off.name}}" id="{{off.id}}">x</button>
+                <div class="custom-input-profile-grid-item">
+                  {{off.name}}
+                </div>
+              
               </div>
-              <form [formGroup]="customInputFormProfession" action="">
-                <input formControlName="text" class="custom-input-profile-change" type="text">
-              </form>
-              <button (click)="customInputFormProfessionClick()">+</button>
+              <div>
+                <input *ngIf="userId == 0" formControlName="hobbyesText" class="custom-input-profile-change" type="text">
+                <button *ngIf="userId == 0" class="sub" id="{{this.profileForm.value.hobbyesText}}" (click)="addOffice($event)">+</button>
+              </div>
+           
             </div>
             
           </div>
