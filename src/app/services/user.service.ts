@@ -76,6 +76,10 @@ export class UserService {
     return this.http.delete(
       `${environment.BACK_URL}:${environment.BACK_PORT}/api/users/offices/${id}`,)
   }
+  getUserForIds(id: Number) {
+    return this.http.get(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/users/${id}`,)
+  }
   // changeName(data: FormData): Observable<any> {
   //   // return this.http.post(`${environment.BACKEND_URL}:${environment.BACKEND_PORT}/api/profile/users`,{'new_name':data.get('new_name'), 'avatar':data.get('avatar')})
   //   return this.http.post<any>(

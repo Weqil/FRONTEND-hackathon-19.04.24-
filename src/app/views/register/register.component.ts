@@ -129,6 +129,11 @@ export class RegisterComponent  implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(50),
       ]),
+      social: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(50),
+      ]),
       code:  new FormControl('', [
         Validators.required,
         Validators.minLength(3),

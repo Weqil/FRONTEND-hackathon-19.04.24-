@@ -29,9 +29,20 @@ export class WorkerProfileComponent  implements OnInit {
 
 
   getUser() {
+    console.log(this.userId)
     if (this.userId) {
       this.auth = false
-      
+      this.userService.getUserForIds(this.userId).pipe(
+        takeUntil(this.destroy$),
+        catchError(err => {
+          this.toasrService.showToast('Не удалось загрузить пользователя', 'warning')
+          return of(EMPTY)
+        })
+      ).subscribe((response: any) => {
+        this.user = response
+        this.hobbies = response.hobbies
+        this.offices = response.offices
+      })
     } else {
       this.auth = true
       this.userId = 0
@@ -85,7 +96,6 @@ export class WorkerProfileComponent  implements OnInit {
     }
     this.hobbies.push(name.target.id)
     this.userService.createUserHobbyes(hobbyName).pipe().subscribe((res)=>{
-      console.log(res)
       this.getUser()
     })
   }
