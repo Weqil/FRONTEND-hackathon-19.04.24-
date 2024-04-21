@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-worker-profile',
@@ -7,29 +10,54 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./worker-profile.component.scss'],
 })
 export class WorkerProfileComponent  implements OnInit {
+  private readonly destroy$ = new Subject<void>();
 
-  constructor() { }
-  customInputFormProfession!:FormGroup
-  professionAdd:any = []
-  professionCurrent:any = []
-  professionDelete:any = []
-  customInputFormProfessionClick(){
-  if(this.customInputFormProfession.value.text !==""){
-    this.professionAdd.push(this.customInputFormProfession.value.text)
-    this.customInputFormProfession.patchValue({
-     text:""
-    }) 
-  }
-   console.log(this.professionAdd)
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private userService: UserService
+  ) { }
 
-  customInputFormProfessionDel(event:any){
-    console.log(event.target.name)
+  customInputForm!:FormGroup
+  userId: Number = 0
+
+  getUser() {
+    if (this.userId) {
+      
+    } else {
+
+    }
   }
 
+  addHobby(id: Number) {
+
+  }
+
+  delHobby(id: Number) {
+
+  }
+
+  addOffice(id: Number) {
+
+  }
+
+  delOffice(id: Number) {}
+ 
   ngOnInit() {
-    this.customInputFormProfession = new FormGroup({
-      text:new FormControl('',[Validators.required])
+    this.route.params.pipe(takeUntil(this.destroy$)).subscribe(params => {
+      this.userId = params['id'];
+      console.log(this.userId)
+    });
+
+    this.customInputForm = new FormGroup({
+      name:new FormControl('',[ 
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(50),
+      ]),
+      age:new FormControl('',[Validators.required]),
+      email:new FormControl('',[Validators.email, Validators.required]),
+      offices:new FormControl([],[Validators.required]),
+      hobbyes:new FormControl([],[Validators.required]),
     })
   }
 
