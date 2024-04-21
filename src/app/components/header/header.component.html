@@ -5,7 +5,8 @@
     </div>
     <div class="header-main-item_button">
         <button [routerLink]="['login']" *ngIf="!auth" class="button-submit">Войти</button>
-        <button *ngIf="auth" class="button-submit">Кабинет</button>
+        <button *ngIf="auth && path != '/cabinet'" class="button-submit">Кабинет</button>
+        <button (click)="logout()" *ngIf="auth && path == '/cabinet'" class="button-submit">Выйти</button>
         <div *ngIf="auth" class="header-main-item_user-icon_wrapper">
           <div>
             <div class="header-main-item_user-icon" src="/assets/icon/contact.svg"></div>
