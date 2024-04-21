@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EMPTY, Subject, catchError, of, takeUntil } from 'rxjs';
 import { CompanyService } from 'src/app/services/company.service';
 import { LoadingService } from 'src/app/services/loading.service';
@@ -19,7 +20,8 @@ export class CabinetComponent  implements OnInit {
     private companyService: CompanyService,
     private meetingService: MeetingService,
     private userService: UserService,
-    private loaderService: LoadingService
+    private loaderService: LoadingService,
+    private router: Router
   ) { }
   companyWorker:string = ''
   companyUsersCount: Number = 0
