@@ -16,6 +16,7 @@ import { CompanyWorkersModalComponent } from './components/company-workers-modal
 import { CompanySettingsModalComponent } from './components/company-settings-modal/company-settings-modal.component';
 import { CompanyStatisticsComponent } from './views/company-statistics/company-statistics.component';
 import { WorkerStatisticsComponent } from './views/worker-statistics/worker-statistics.component';
+import { WorkerProfileComponent } from './views/worker-profile/worker-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { WorkerStatisticsComponent } from './views/worker-statistics/worker-stat
     CompanyWorkersModalComponent,
     CompanySettingsModalComponent,
     CompanyStatisticsComponent,
-    WorkerStatisticsComponent
+    WorkerStatisticsComponent,
+    WorkerProfileComponent
   ],
   imports: [
     BrowserModule, 
