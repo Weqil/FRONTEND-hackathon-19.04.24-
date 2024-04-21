@@ -73,9 +73,7 @@ export class CabinetComponent  implements OnInit {
       })
     ).subscribe(response => {
       this.loaderService.hideLoading()
-      if (response.company_invites.length) {
         this.codes = response.company_invites
-      }
     })
   }
 
