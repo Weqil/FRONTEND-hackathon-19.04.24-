@@ -69,5 +69,15 @@ export class MeetingService {
     );
   }
 
+  acceptMeetingUser(id: Number) {
+    return this.http.post<any>(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/meetings/${id}/accept`, {}
+    );
+  }
 
+  rejectMeetingUser(id: Number) {
+    return this.http.post<any>(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/meetings/${id}/decline`, {}
+    );
+  }
 }
