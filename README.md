@@ -10,7 +10,7 @@ docker build --pull --rm -f "Dockerfile" -t frontendhackathon1904:latest "."
 
 После того как образ будет собран вам необходимо его запустить, сделать это можно с помощью следующей команды:
 ```
-docker run -p 8100:80 hakaton-2024-zaneslo
+docker run -p 8100:80 frontendhackathon1904:latest
 ```
 
 ## Стандартный запуск
