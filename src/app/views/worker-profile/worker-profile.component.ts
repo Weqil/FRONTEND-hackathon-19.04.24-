@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 
+
 @Component({
   selector: 'app-worker-profile',
   templateUrl: './worker-profile.component.html',
@@ -17,38 +18,52 @@ export class WorkerProfileComponent  implements OnInit {
     private userService: UserService
   ) { }
 
-  customInputForm!:FormGroup
+  profileForm!:FormGroup
   userId: Number = 0
-
+  hobbies:any = []
   getUser() {
     if (this.userId) {
       
     } else {
-
+      this.userService.getUserHobbyes().pipe().subscribe((res)=>{
+        this.hobbies = res.hobbyes
+    })
     }
   }
 
-  addHobby(id: Number) {
-
-  }
-
-  delHobby(id: Number) {
-
-  }
-
   addOffice(id: Number) {
+    
+  }
 
+  delHobby(id:any) {
+    this.userService.delUserHobbyes(id.target.id).pipe().subscribe((res)=>{
+      console.log(res)
+    })
+    this.getUser()
+  }
+
+  addHobby(name:any) {
+    let hobbyName:any = {
+      "name":name.target.id
+    }
+    this.hobbies.push(name.target.id)
+    this.userService.createUserHobbyes(hobbyName).pipe().subscribe((res)=>{
+      console.log(res)
+    })
+    this.getUser()
   }
 
   delOffice(id: Number) {}
  
   ngOnInit() {
+    this.getUser()
+    
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe(params => {
       this.userId = params['id'];
       console.log(this.userId)
     });
 
-    this.customInputForm = new FormGroup({
+    this.profileForm = new FormGroup({
       name:new FormControl('',[ 
         Validators.required,
         Validators.minLength(3),
@@ -58,6 +73,7 @@ export class WorkerProfileComponent  implements OnInit {
       email:new FormControl('',[Validators.email, Validators.required]),
       offices:new FormControl([],[Validators.required]),
       hobbyes:new FormControl([],[Validators.required]),
+      hobbyesText:new FormControl('',[Validators.required])
     })
   }
 

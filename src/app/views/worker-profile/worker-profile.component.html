@@ -2,7 +2,7 @@
   <app-header></app-header>
   <div class="main">
     <div class="main-header second-header">Мой профиль</div>
-    <form action="">
+    <form [formGroup]="profileForm" action="">
       <div class="main-info-grid">
         <div class="main-info-grid_inputs">
           <ion-input class="input" value="" labelPlacement="floating" fill="outline">
@@ -15,16 +15,14 @@
             <div class="label-text" slot="label">Электронная почта</div>
           </ion-input>
           <div class="custom-input-profile">
-            <div class="label-text custom-input-profile-label" slot="label">Профессии</div>
+            <div class="label-text custom-input-profile-label" slot="label">Хобби</div>
             <div class="custom-input-profile-change_wrapper">
-              <!-- <div *ngFor="let prof of  professionAdd">
-                {{prof}}
-                <button name="{{prof}}" (click)="customInputFormProfessionDel($event)">-</button>
-              </div> -->
-              <!-- <form [formGroup]="customInputFormProfession" action="">
-                <input formControlName="text" class="custom-input-profile-change" type="text">
-              </form> -->
-              <!-- <button (click)="customInputFormProfessionClick()">+</button> -->
+              <div *ngFor="let prof of hobbies">
+                {{prof.name}}
+                <button (click)="delHobby($event)" name="{{prof.name}}" id="{{prof.id}}">-</button>
+              </div>
+                <input formControlName="hobbyesText" class="custom-input-profile-change" type="text">
+              <button id="{{this.profileForm.value.hobbyesText}}" (click)="addHobby($event)" >+</button>
             </div>
             
           </div>
