@@ -16,13 +16,19 @@
           </ion-input>
           <div class="custom-input-profile">
             <div class="label-text custom-input-profile-label" slot="label">Хобби</div>
-            <div class="custom-input-profile-change_wrapper">
-              <div *ngFor="let prof of hobbies">
-                {{prof.name}}
-                <button (click)="delHobby($event)" name="{{prof.name}}" id="{{prof.id}}">-</button>
+            <div class="custom-input-profile-change_wrapper custom-input-profile-grid">
+              <div class="" *ngFor="let prof of hobbies">
+                <button class="del" (click)="delHobby($event)" name="{{prof.name}}" id="{{prof.id}}">x</button>
+                <div class="custom-input-profile-grid-item">
+                  {{prof.name}}
+                </div>
+              
               </div>
+              <div>
                 <input formControlName="hobbyesText" class="custom-input-profile-change" type="text">
-              <button id="{{this.profileForm.value.hobbyesText}}" (click)="addHobby($event)" >+</button>
+                <button class="sub" id="{{this.profileForm.value.hobbyesText}}" (click)="addHobby($event)">+</button>
+              </div>
+           
             </div>
             
           </div>
