@@ -62,9 +62,9 @@ export class LoginComponent  implements OnInit {
     this.toastService.showToast(MessagesAuth.login, 'success');
     this.loginForm.reset();
     this.loginForm.enable();
-    this.router.navigate(['cabinet']);
+    this.router.navigate(['cabinet'], {replaceUrl: true});
   }
-  
+
   errorResponseAfterLogin(err: any) {
     this.loadingService.hideLoading();
     this.toastService.showToast(

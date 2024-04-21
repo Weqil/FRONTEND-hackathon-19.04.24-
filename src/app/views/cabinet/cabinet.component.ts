@@ -109,8 +109,9 @@ export class CabinetComponent  implements OnInit {
 
   ngOnInit() {
     const user = this.userService.getUserFromLocalStorage()
-    if (user.companies.user_id == user.id) {
+    if (user.companies[0].user_id == user.id) {
       this.companyWorker = 'company'
+
       this.getCompaniesCompaniesCount()
       this.getCompaniesMeetingCount()
       this.getCodeCompany()
@@ -118,5 +119,13 @@ export class CabinetComponent  implements OnInit {
       this.companyWorker = 'worker'
       this.getUsersMeetingCount()
     }
+    this.router.events.pipe(takeUntil(this.destroy$)).subscribe(() => {
+      const user = this.userService.getUserFromLocalStorage()
+      if (user.companies[0].user_id == user.id) {
+        this.companyWorker = 'company'
+      } else {
+        this.companyWorker = 'worker'
+      }
+    })
   }
 }

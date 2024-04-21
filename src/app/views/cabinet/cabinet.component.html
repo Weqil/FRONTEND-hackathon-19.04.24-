@@ -31,7 +31,7 @@
             <div class="last-header_regular main-cabinet-section_header">Настройки компании</div>
             <div class="last-header_regular_small main-cabinet-section_header">Название компании</div>
             <div class="button-wrapper">
-              <button id="open-modal-company-profile"  type="submit" class="button-submit">Посмотреть всех участников</button>
+              <button id="open-modal-company-profile"  type="submit" class="button-submit">Изменить</button>
               <ion-modal trigger="open-modal-company-profile">
                 <ng-template>
                       <ion-content>
@@ -43,7 +43,7 @@
         </div>
         <div class="main-cabinet-section">
           <div class="last-header_regular main-cabinet-section_header">Код приглашения</div>
-            
+
           <div *ngFor="let code of codes; let i = index" class="main-cabinet-section_code">
             <div class="last-header">{{code.code}}</div>
             <button (click)="deleteCodeCompany(code.id)" class="del-code">x</button>
@@ -57,7 +57,7 @@
       </div>
       </div>
     </ng-container>
- 
+
     <ng-container *ngIf="companyWorker == 'worker'">
       <div class="content-grid">
           <div class="main-cabinet-section">
@@ -76,8 +76,8 @@
         </div>
       </div>
     </ng-container>
- 
-    
+
+
   </div>
 </section>
 
