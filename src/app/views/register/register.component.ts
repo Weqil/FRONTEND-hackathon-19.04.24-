@@ -57,6 +57,7 @@ export class RegisterComponent  implements OnInit {
       this.authservice.register(this.registerFormUser.value)
       .pipe(
         map((response: any) => {
+          this.tokenService.setToken(response.access_token);
           this.toastService.showToast(
             'Вы успешно зарегестрировались!!!',
             'success'

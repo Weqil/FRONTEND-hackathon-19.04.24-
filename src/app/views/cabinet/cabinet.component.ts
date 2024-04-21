@@ -109,7 +109,7 @@ export class CabinetComponent  implements OnInit {
 
   ngOnInit() {
     const user = this.userService.getUserFromLocalStorage()
-    if (user.companies.length > 0) {
+    if (user.companies.user_id == user.id) {
       this.companyWorker = 'company'
       this.getCompaniesCompaniesCount()
       this.getCompaniesMeetingCount()
