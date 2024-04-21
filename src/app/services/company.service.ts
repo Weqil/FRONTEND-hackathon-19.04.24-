@@ -56,4 +56,18 @@ export class CompanyService {
       params
     );
   }
+
+  addCode() {
+    let data = {}
+    return this.http.post<any>(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/companies/${this.company_id}/invites`,
+      data
+    );
+  }
+
+  deleteCode(id: Number) {
+    return this.http.delete<any>(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/companies/${this.company_id}/invites/${id}`
+    );
+  }
 }
