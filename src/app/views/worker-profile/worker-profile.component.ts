@@ -22,6 +22,7 @@ export class WorkerProfileComponent  implements OnInit {
 
   profileForm!:FormGroup
   userId: Number = 0
+  auth: boolean = true
   hobbies:any = []
   offices: any = []
   user: any
@@ -29,8 +30,11 @@ export class WorkerProfileComponent  implements OnInit {
 
   getUser() {
     if (this.userId) {
+      this.auth = false
       
     } else {
+      this.auth = true
+      this.userId = 0
       this.user = this.userService.getUserFromLocalStorage()
       this.getHobby()
       this.getOffice()
@@ -62,7 +66,7 @@ export class WorkerProfileComponent  implements OnInit {
   }
 
   addOffice(name: any) {
-    this.userService.addUserHobbyes(name.target.id).pipe().subscribe((res)=>{
+    this.userService.addUserOffices(name.target.id).pipe().subscribe((res)=>{
       console.log(res)
     })
     this.getUser()
@@ -94,11 +98,10 @@ export class WorkerProfileComponent  implements OnInit {
   }
  
   ngOnInit() {
-    this.getUser()
-    
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe(params => {
       this.userId = params['id'];
     });
+    this.getUser()
 
     this.profileForm = new FormGroup({
       name:new FormControl('',[ 
