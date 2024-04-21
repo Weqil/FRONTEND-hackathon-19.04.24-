@@ -43,12 +43,16 @@
         </div>
         <div class="main-cabinet-section">
           <div class="last-header_regular main-cabinet-section_header">Код приглашения</div>
-          <div class="main-cabinet-section_code">
-            <div class="last-header">233fr</div>
-            <button class="del-code">x</button>
+            
+          <div *ngFor="let code of codes; let i = index" class="main-cabinet-section_code">
+            <div class="last-header">{{code.code}}</div>
+            <button (click)="deleteCodeCompany(code.id)" class="del-code">x</button>
+          </div>
+          <div *ngIf="codes.length < 1" class="main-cabinet-section_code">
+            <div class="last-header">Добавьте код</div>
           </div>
           <div class="button-wrapper">
-            <button [routerLink]="['/statistics']"  type="submit" class="button-submit">Добавить код</button>
+            <button (click)="addCodeCompany()"  type="submit" class="button-submit">Добавить код</button>
           </div>
       </div>
       </div>

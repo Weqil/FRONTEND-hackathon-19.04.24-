@@ -57,6 +57,7 @@ export class RegisterComponent  implements OnInit {
       this.authservice.register(this.registerFormUser.value)
       .pipe(
         map((response: any) => {
+          this.tokenService.setToken(response.access_token);
           this.toastService.showToast(
             'Вы успешно зарегестрировались!!!',
             'success'
@@ -81,12 +82,12 @@ export class RegisterComponent  implements OnInit {
     this.companyWorker = event.detail.value
   }
 
-  loginAfterSocial(token: any) {
+  async loginAfterSocial(token: any) {
     if (token.length >= 47) {
-      this.tokenService.setToken(token);
+      await this.tokenService.setToken(token);
       // this.registerForm.disable()
       this.loadingService.showLoading();
-      this.userService
+      await this.userService
         .getUserById()
         .pipe(takeUntil(this.destroy$))
         .subscribe({

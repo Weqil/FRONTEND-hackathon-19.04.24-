@@ -12,9 +12,6 @@
 }
 .header-main-item_user-icon_wrapper{
     margin-left: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 .header-main-item_user-icon{
     margin-top: auto;
@@ -23,3 +20,28 @@
     height: 3rem;
     font-size: 1rem;
 }
+.exit-main{
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: -2rem;
+    height: 30px;
+    text-align: center;
+    font-size: 12px;
+    max-width: 143px;
+    border-radius: 6px;
+    font-family:'Montserrat-Regular';
+    position: absolute;
+    padding: 10px;
+    box-shadow: 1px 0px 2px 0px rgba(34, 60, 80, 0.2) inset;
+
+    .exit{
+        transition: 0.5s all;
+        
+        opacity: 0;
+    }
+}
+
+
