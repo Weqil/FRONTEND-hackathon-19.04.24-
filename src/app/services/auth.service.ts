@@ -7,6 +7,11 @@ import {
   BehaviorSubject,
   ReplaySubject,
   tap,
+  takeUntil,
+  catchError,
+  Subject,
+  of,
+  EMPTY,
 } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IUser } from '../models/user';
@@ -20,6 +25,7 @@ import { PasswordReset } from '../models/password-reset';
   providedIn: 'root'
 })
 export class AuthService {
+  private readonly destroy$ = new Subject<void>();
   authenticationState = new BehaviorSubject(false);
 
   constructor(
@@ -77,11 +83,30 @@ export class AuthService {
     );
   }
 
+  logoutReq() {
+    let data = {}
+    return this.http.post<any>(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/logout`, data
+    );
+  }
+
   logout() {
-    this.tokenService.removeToken();
-    this.userService.removeUserFromLocalStorage();
-    this.authenticationState.next(false);
-    this.router.navigate(['login']);
-    this.toastService.showToast(MessagesAuth.logout, 'secondary');
+    this.logoutReq().pipe(
+      takeUntil(this.destroy$),
+      catchError(err => {
+        this.tokenService.removeToken();
+        this.userService.removeUserFromLocalStorage();
+        this.authenticationState.next(false);
+        this.router.navigate(['login']);
+        this.toastService.showToast('Выйти правильно не удалось', 'warning')
+        return of(EMPTY)
+      })
+    ).subscribe(() => {
+      this.tokenService.removeToken();
+      this.userService.removeUserFromLocalStorage();
+      this.authenticationState.next(false);
+      this.router.navigate(['login']);
+      this.toastService.showToast(MessagesAuth.logout, 'secondary');
+    })
   }
 }
