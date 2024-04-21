@@ -36,8 +36,10 @@ export class WorkerProfileComponent  implements OnInit {
           this.toasrService.showToast('Не удалось загрузить пользователя', 'warning')
           return of(EMPTY)
         })
-      ).subscribe(response => {
+      ).subscribe((response: any) => {
         this.user = response
+        this.hobbies = response.hobbies
+        this.offices = response.offices
       })
     } else {
       this.user = this.userService.getUserFromLocalStorage()
