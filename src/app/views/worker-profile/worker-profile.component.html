@@ -5,14 +5,17 @@
     <form [formGroup]="profileForm" action="">
       <div class="main-info-grid">
         <div class="main-info-grid_inputs">
-          <ion-input class="input" value="" labelPlacement="floating" fill="outline">
+          <ion-input class="input" value="{{user.name}}" labelPlacement="floating" fill="outline">
             <div class="label-text" slot="label">Имя</div>
           </ion-input>
           <ion-input type="date"  class="input" value="" labelPlacement="floating" fill="outline">
             <div class="label-text" slot="label">Дата рождения</div>
           </ion-input>
-          <ion-input type="mail"  class="input" value="" labelPlacement="floating" fill="outline">
+          <ion-input type="mail"  class="input" value="{{user.email}}" labelPlacement="floating" fill="outline">
             <div class="label-text" slot="label">Электронная почта</div>
+          </ion-input>
+          <ion-input type="mail"  class="input" value="{{user.social}}" labelPlacement="floating" fill="outline">
+            <div class="label-text" slot="label">Ссылка для связи</div>
           </ion-input>
           <div class="custom-input-profile">
             <div class="label-text custom-input-profile-label" slot="label">Хобби</div>
