@@ -5,12 +5,12 @@
 ## Docker 
 для того что бы запустить проект через Docker вам понадобится сам Docker и прописать следующую команду:
 ```
-docker build -t hakaton-2024-zaneslo .
+docker build --pull --rm -f "Dockerfile" -t frontendhackathon1904:latest "."
 ```
 
 После того как образ будет собран вам необходимо его запустить, сделать это можно с помощью следующей команды:
 ```
-docker run -p 8100:80 hakaton-2024-zaneslo
+docker run -p 8100:80 frontendhackathon1904:latest
 ```
 
 ## Стандартный запуск
