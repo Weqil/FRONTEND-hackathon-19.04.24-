@@ -57,6 +57,12 @@ export class CompanyService {
     );
   }
 
+  getCode() {
+    return this.http.get<any>(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/companies/${this.company_id}/invites`
+    );
+  }
+
   addCode() {
     let data = {}
     return this.http.post<any>(
