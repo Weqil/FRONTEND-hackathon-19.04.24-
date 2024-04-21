@@ -12,7 +12,7 @@
             <div>Всего встреч {{meetings.length}}</div>
           </div>
         </ion-item>
-        <div *ngFor="let meeting of meetings; let i = index" [ngClass]="meeting.length ? 'ion-padding meeting-info successful' : 'ion-padding meeting-info cancelled'" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
+        <div *ngFor="let meeting of meetings; let i = index" [ngClass]="meeting.status ? 'ion-padding meeting-info successful' : 'ion-padding meeting-info cancelled'" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
         <!-- <div class="ion-padding meeting-info cancelled" slot="content"><div>Название встречи</div><div>22.04.2024</div></div> -->
       </ion-accordion>
 
@@ -22,7 +22,7 @@
             <div>Успешных встреч</div>
           </div>
         </ion-item>
-        <!-- <div *ngFor="let meeting of meetings; let i = index" [hidden]="meeting" class="ion-padding meeting-info successful" slot="content"><div>Название встречи</div><div>22.04.2024</div></div> -->
+        <div *ngFor="let meeting of meetings; let i = index" [hidden]="!meeting.status" class="ion-padding meeting-info successful" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
       </ion-accordion>
 
       <ion-accordion value="cancelled">
@@ -31,7 +31,7 @@
             <div>Отмененных встреч</div>
           </div>
         </ion-item>
-        <!-- <div *ngFor="let meeting of meetings; let i = index" [hidden]="!meeting" class="ion-padding meeting-info cancelled" slot="content"><div>Название встречи</div><div>22.04.2024</div></div> -->
+        <div *ngFor="let meeting of meetings; let i = index" [hidden]="meeting.status" class="ion-padding meeting-info cancelled" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
       </ion-accordion>
 
     </ion-accordion-group>

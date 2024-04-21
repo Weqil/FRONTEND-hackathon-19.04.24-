@@ -9,22 +9,25 @@
       <ion-accordion value="all">
         <ion-item slot="header" color="white">
           <div class="last-header_regular">
-            <div>Всего встреч 22</div>
+            <div>Всего встреч {{meetingsCount}}</div>
           </div>
         </ion-item>
-        <div class="ion-padding meeting-info successful" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
-        <div class="ion-padding meeting-info cancelled" slot="content"><div>Название встречи</div><div>22.04.2024</div></div>
+        <div *ngFor="let meeting of meetings; let i = index" [ngClass]="meeting.status ? 'ion-padding meeting-info successful' : 'ion-padding meeting-info cancelled'" slot="content"><div>{{meeting.title}}</div><div *ngIf="meeting.start_time">{{meeting.start_time}}</div></div>
       </ion-accordion>
 
 
     </ion-accordion-group>
-    <div class="last-header invite-header">Новое приглашение!</div>
+    <div class="last-header invite-header">Текущее приглашение!</div>
     <div class="invite">
-      <div class="ion-padding last-header_regular" slot="content"><div>Арсений Коновалов</div>
-      <div class="invite-date">22.04.2024</div>
-      <div class="invite-buttons">
-        <button id="open-modal" expand="block"  type="submit" class=" invite-buttons_item_accept">Принять</button>
-        <button id="open-modal" expand="block"  type="submit" class=" invite-buttons_item_cancel">Отклонить</button>
+      <div class="ion-padding last-header_regular" slot="content"><div>{{meetingNow.title}}</div>
+      <div class="invite-date" *ngIf="meetingNow.start_time">{{meetingNow.start_time}}</div>
+      <div class="invite-buttons"  *ngIf="meetingNow.status == null">
+        <button id="open-modal" (click)="acceptMeeting(meetingNow)" expand="block"  type="submit" class=" invite-buttons_item_accept">Принять</button>
+        <button id="open-modal" (click)="rejectMeeting(meetingNow)" expand="block"  type="submit" class=" invite-buttons_item_cancel">Отклонить</button>
+      </div>
+      <div class="invite-buttons"  *ngIf="meetingNow.status != null">
+        <button id="open-modal" *ngIf="meetingNow.status" disable="true" expand="block"  type="submit" class=" invite-buttons_item_accept">Принято</button>
+        <button id="open-modal" *ngIf="!meetingNow.status" disable="true" expand="block"  type="submit" class=" invite-buttons_item_cancel">Отклонено</button>
       </div>
     </div>
     </div>
