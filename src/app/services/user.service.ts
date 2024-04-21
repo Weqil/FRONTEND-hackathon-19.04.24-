@@ -44,13 +44,37 @@ export class UserService {
       `${environment.BACK_URL}:${environment.BACK_PORT}/api/users/hobbyes`
     );
   }
+  getUserOffices() {
+    return this.http.get<any>(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/users/offices`
+    );
+  }
   createUserHobbyes(body:any){
     return this.http.post(
       `${environment.BACK_URL}:${environment.BACK_PORT}/api/users/hobbyes`, body)
   }
+  addUserHobbyes(name:string){
+    const data = {
+      name: name
+    }
+    return this.http.post(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/users/hobbyes`,data)
+  }
+
   delUserHobbyes(id:any){
     return this.http.delete(
       `${environment.BACK_URL}:${environment.BACK_PORT}/api/users/hobbyes/${id}`,)
+  }
+  addUserOffices(name:string){
+    const data = {
+      name: name
+    }
+    return this.http.post(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/users/offices`,data)
+  }
+  delUserOffices(id:any){
+    return this.http.delete(
+      `${environment.BACK_URL}:${environment.BACK_PORT}/api/users/offices/${id}`,)
   }
   // changeName(data: FormData): Observable<any> {
   //   // return this.http.post(`${environment.BACKEND_URL}:${environment.BACKEND_PORT}/api/profile/users`,{'new_name':data.get('new_name'), 'avatar':data.get('avatar')})

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { EMPTY, Subject, catchError, of, takeUntil } from 'rxjs';
+import { ToastService } from 'src/app/services/toast.service';
 import { UserService } from 'src/app/services/user.service';
 
 
@@ -15,24 +16,56 @@ export class WorkerProfileComponent  implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private toasrService: ToastService
   ) { }
 
   profileForm!:FormGroup
   userId: Number = 0
   hobbies:any = []
+  offices: any = []
+  user: any
+
+
   getUser() {
     if (this.userId) {
       
     } else {
-      this.userService.getUserHobbyes().pipe().subscribe((res)=>{
-        this.hobbies = res.hobbyes
-    })
+      this.user = this.userService.getUserFromLocalStorage()
+      this.getHobby()
+      this.getOffice()
     }
   }
 
-  addOffice(id: Number) {
-    
+  getHobby() {
+    this.userService.getUserHobbyes().pipe(
+      takeUntil(this.destroy$),
+      catchError(err => {
+        this.toasrService.showToast('Не удалось загрузить хобби', 'warning')
+        return of(EMPTY)
+      })
+    ).subscribe((res)=>{
+      this.hobbies = res.hobbyes
+    })
+  }
+
+  getOffice() {
+    this.userService.getUserOffices().pipe(
+      takeUntil(this.destroy$),
+      catchError(err => {
+        this.toasrService.showToast('Не удалось загрузить хобби', 'warning')
+        return of(EMPTY)
+      })
+    ).subscribe((res)=>{
+      this.offices = res.offices
+    })
+  }
+
+  addOffice(name: any) {
+    this.userService.addUserHobbyes(name.target.id).pipe().subscribe((res)=>{
+      console.log(res)
+    })
+    this.getUser()
   }
 
   delHobby(id:any) {
@@ -49,18 +82,22 @@ export class WorkerProfileComponent  implements OnInit {
     this.hobbies.push(name.target.id)
     this.userService.createUserHobbyes(hobbyName).pipe().subscribe((res)=>{
       console.log(res)
+      this.getUser()
     })
-    this.getUser()
   }
 
-  delOffice(id: Number) {}
+  delOffice(id: any) {
+    this.userService.delUserOffices(id.target.id).pipe().subscribe((res)=>{
+      console.log(res)
+      this.getUser()
+    })
+  }
  
   ngOnInit() {
     this.getUser()
     
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe(params => {
       this.userId = params['id'];
-      console.log(this.userId)
     });
 
     this.profileForm = new FormGroup({
