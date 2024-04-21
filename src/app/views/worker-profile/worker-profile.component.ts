@@ -28,8 +28,17 @@ export class WorkerProfileComponent  implements OnInit {
 
 
   getUser() {
+    console.log(this.userId)
     if (this.userId) {
-      
+      this.userService.getUserForIds(this.userId).pipe(
+        takeUntil(this.destroy$),
+        catchError(err => {
+          this.toasrService.showToast('Не удалось загрузить пользователя', 'warning')
+          return of(EMPTY)
+        })
+      ).subscribe(response => {
+        this.user = response
+      })
     } else {
       this.user = this.userService.getUserFromLocalStorage()
       this.getHobby()
@@ -81,7 +90,6 @@ export class WorkerProfileComponent  implements OnInit {
     }
     this.hobbies.push(name.target.id)
     this.userService.createUserHobbyes(hobbyName).pipe().subscribe((res)=>{
-      console.log(res)
       this.getUser()
     })
   }
@@ -94,11 +102,10 @@ export class WorkerProfileComponent  implements OnInit {
   }
  
   ngOnInit() {
-    this.getUser()
-    
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe(params => {
       this.userId = params['id'];
     });
+    this.getUser()
 
     this.profileForm = new FormGroup({
       name:new FormControl('',[ 
