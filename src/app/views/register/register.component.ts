@@ -81,12 +81,12 @@ export class RegisterComponent  implements OnInit {
     this.companyWorker = event.detail.value
   }
 
-  loginAfterSocial(token: any) {
+  async loginAfterSocial(token: any) {
     if (token.length >= 47) {
-      this.tokenService.setToken(token);
+      await this.tokenService.setToken(token);
       // this.registerForm.disable()
       this.loadingService.showLoading();
-      this.userService
+      await this.userService
         .getUserById()
         .pipe(takeUntil(this.destroy$))
         .subscribe({
