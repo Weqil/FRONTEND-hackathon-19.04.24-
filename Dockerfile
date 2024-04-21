@@ -11,5 +11,6 @@ RUN npm run build
 FROM nginx:latest
 
 COPY --from=build /usr/local/app/dist/app /usr/share/nginx/html
+COPY /nginx/ /etc/nginx/conf.d/
 
 EXPOSE 80
