@@ -8,6 +8,11 @@ import { RegisterComponent } from '../views/register/register.component';
 
 export const authRoutes: Routes = [
   {
+    path: '',
+    component: LoginComponent,
+    canActivate: [LoggedInAuthGuard],
+  },
+  {
     path: 'login',
     component: LoginComponent,
     canActivate: [LoggedInAuthGuard],
