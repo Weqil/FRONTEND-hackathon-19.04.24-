@@ -5,11 +5,13 @@
     </div>
     <div class="header-main-item_button">
         <button [routerLink]="['login']" *ngIf="!auth" class="button-submit">Войти</button>
-        <button *ngIf="auth" class="button-submit">Найти пару</button>
+        <button *ngIf="auth" class="button-submit">Кабинет</button>
         <div *ngIf="auth" class="header-main-item_user-icon_wrapper">
-          <img class="header-main-item_user-icon" src="/assets/icon/contact.svg">
+          <div>
+            <div class="header-main-item_user-icon" src="/assets/icon/contact.svg"></div>
+          </div>
+         
         </div>
-
     </div>
   </nav>
 </div>
